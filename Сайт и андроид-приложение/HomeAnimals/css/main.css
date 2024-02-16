@@ -1,0 +1,166 @@
+body {
+	font-family: Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+	color: #222222;
+	background-color:#FFF8DC;
+}
+
+
+.clearfix:after {
+	content:'';
+	display: table;
+	width: 100%;
+	clear: both;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+header {
+	background: url(../img/animals.jpg) no-repeat center top / cover;
+	padding-bottom: 350px;
+}
+.container {
+	width: 930px;
+	margin: 0 auto;
+}
+.logo {
+	margin-top:20px;
+	float: left;
+}
+nav {
+	float: right;
+	margin-top: 5px;
+}
+
+.menu {
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+	.menu li {
+		float: left;
+		display: block; /*убирает точки у каждого свлова меню*/
+		margin-right:41px; /*расстояние между словами меню*/
+	}
+	
+
+	.menu li a {
+		color: #000;
+		text-decoration: none; /* убирает подчеркивание */
+		text-transform: uppercase; /*большой регистр*/
+		font-size: 14px;
+		float: right;
+		margin-right:5px;
+	}
+	
+	.titles__first {
+		font-size: 28px;
+		color: #603;
+		text-transform: uppercase;
+		text-align: left;
+	}
+	
+
+	.button {
+		background: #FF0;
+		color: #000;
+		border-radius: 3px;
+		display: block;
+		width: 200px;
+		padding: 20 px 0;
+		margin: 15px auto;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 18px;
+		text-align: center;
+	}
+	
+	.title {
+		padding-top: 75px;
+	}
+	
+		.title h2 {
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+		margin: 0;
+	}
+	
+		.title p {
+		color: #777777;
+		text-align: center;
+		font-size: 16px;
+		margin-top:5px;
+	}
+	
+	.services__item {
+		width: 270px;
+		float: left;
+		text-align: center;
+		font-size: 14px;
+	}
+	
+
+	
+	.services__item p {
+		color: #7777777;
+		line-height: 1.55 em;
+		
+	}
+	
+	.services__item:last-child{
+		float: right;
+	}
+	
+	.services__item:nth-child(2){
+		margin-left: 55px;
+		font-size: 14px;
+	}
+	
+
+	
+	#ob p{
+	font-size: 25px;
+	text-align: center;
+	color: black;
+	background-color:#FCC;
+	}
+	
+	#portfolio {
+		padding-bottom: 120px;
+	}
+	
+	#about {
+		margin: 20px ;
+	}
+	
+	#about p{
+		text-align: left;
+	}
+	
+	#footer{
+		background-color:#DCDCDC;
+				text-align: center;
+	}
+
+	#footer a{
+		margin: 50px ;
+		text-align: center;
+
+	}
+	#footer div {
+		text-align: center;
+		font-size: 13px;
+	}
+	#footer h3 {
+		font-size: 13px;
+	}
+	
+
+

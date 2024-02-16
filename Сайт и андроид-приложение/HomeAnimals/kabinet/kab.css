@@ -1,0 +1,17 @@
+body {
+	font-family: Arial, sans-serif;
+	padding: 0;
+	margin-left: 500px;
+	color: #222222;
+	background: url(../img/pictsled.jpg) 
+}
+	.titles__first {
+		font-size: 28px;
+		color: #603;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	header {
+	background-color:#FCC;
+	margin-right: 500px;
+}
