@@ -1,0 +1,159 @@
+<?php
+
+$arr1 = [
+    0 => [
+        'id' => 0,
+        'name' => 'One'
+    ],
+    1 => [
+        'id' => 1,
+        'name' => 'Two'
+    ],
+    2 => [
+        'id' => 2,
+        'name' => 'Three'
+    ],
+    3 => [
+        'id' => 3,
+        'name' => 'Four'
+    ],
+];
+
+$arr2 = [
+    0 => [
+        0 => [
+            'id' => 0,
+            'name' => 'One.One',
+            'price' => 1100
+        ],
+        1 => [
+            'id' => 1,
+            'name' => 'One.Two',
+            'price' => 1600
+        ],
+        2 => [
+            'id' => 2,
+            'name' => 'One.Three',
+            'price' => 800
+        ],
+    ],
+    1 => [
+        0 => [
+            'id' => 3,
+            'name' => 'Two.One',
+            'price' => 990
+        ],
+        1 => [
+            'id' => 4,
+            'name' => 'Two.Two',
+            'price' => 2200
+        ],
+    ],
+    2 => [
+        0 => [
+            'id' => 5,
+            'name' => 'Three.One',
+            'price' => 3500
+        ],
+        1 => [
+            'id' => 6,
+            'name' => 'Three.Two',
+            'price' => 2900
+        ],
+        2 => [
+            'id' => 7,
+            'name' => 'Three.Three',
+            'price' => 1800
+        ],
+        3 => [
+            'id' => 8,
+            'name' => 'Three.Three',
+            'price' => 960
+        ],
+    ],
+];
+
+if (isset($_GET['ajax'])) {
+    echo json_encode(['success' => true, 'products' => ((isset($arr2[$_POST['category']])) ? $arr2[$_POST['category']] : [])]);
+    exit();
+}
+
+?>
+
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+            body > div {
+                width: 300px;
+                padding: 20px;
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>
+                Price <span data-id='price'>-</span> rub.
+            </p>
+            <p>
+                Category
+                <select data-id='categories'>
+                    <option value="">- Select category -</option>
+                    <?php
+                        foreach ($arr1 as $key => $value) {
+                            ?>
+                            <option value="<?php echo $value['id'];?>"><?php echo $value['name']; ?></option>
+                            <?php
+                        }
+                    ?>
+                </select>
+            </p>
+            <p>
+                Product
+                <select data-id='products'>
+                    <option value="">- Select category -</option>
+                </select>
+            </p>
+        </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('[data-id="categories"]').change(function(){
+                    $.ajax({
+                            url: "?ajax",
+                            type: "POST",
+                            data: ({
+                                category: $(this).val()
+                            }),
+                            dataType: "json",
+                            success: function(result){
+                                if (!result.success) {
+                                    alert('bad');
+                                    return;
+                                }
+                                $('[data-id="products"]').html( 
+                                    (result.products.length > 0) ? 
+                                    result.products.map(function(product){
+                                        return '<option value="'+product.id+'" data-price="'+product.price+'">'+product.name+'</option>'
+                                    }) : '<option value="">- no products -</option>'
+                                );
+                                calcPrice();
+                            }
+                        });
+                });
+
+                $('[data-id="products"]').change(function(){
+                    calcPrice();
+                });
+
+                calcPrice();
+            });
+
+            function calcPrice() {
+                var priceBlock = $('[data-id="price"]');
+                priceBlock.html( $('[data-id="products"] > option:selected').attr('data-price') || 0 );
+            }
+        </script>
+    </body>
+</html>
